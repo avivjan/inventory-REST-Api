@@ -8,17 +8,17 @@ import java.util.Objects;
 @Entity
 public class Item {
     @Id
-    @Column(name = "item no", nullable = false)
+    @Column(name = "itemNo", nullable = false)
     private Long itemNo;
 
     @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "amount", nullable = false)
-    private String amount;
+    private int amount;
 
     @Column(name = "inventoryCode", nullable = false)
-    private String inventoryCode;
+    private Long inventoryCode;
 
 
     public Long getItemNo() {
@@ -37,19 +37,19 @@ public class Item {
         this.name = name;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
-    public String getInventoryCode() {
+    public Long getInventoryCode() {
         return inventoryCode;
     }
 
-    public void setInventoryCode(String inventoryCode) {
+    public void setInventoryCode(Long inventoryCode) {
         this.inventoryCode = inventoryCode;
     }
 

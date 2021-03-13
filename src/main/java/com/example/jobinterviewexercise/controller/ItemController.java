@@ -1,36 +1,64 @@
 package com.example.jobinterviewexercise.controller;
 
+import com.example.jobinterviewexercise.common.DepositDetails;
+import com.example.jobinterviewexercise.common.WithdrawalDetails;
 import com.example.jobinterviewexercise.models.Item;
-import com.example.jobinterviewexercise.service.ItemsService;
+import com.example.jobinterviewexercise.common.ItemServiceRead;
+import com.example.jobinterviewexercise.common.ItemServiceWrite;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/item")
 public class ItemController
 {
     @Autowired
-    ItemsService itemsService;
+    ItemServiceRead itemServiceRead;
+    @Autowired
+    ItemServiceWrite itemServiceWrite;
 
-
-    @RequestMapping(value = "/find/last/{lastName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{itemNo}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Page<Item> findByLastName(@PathVariable("lastName") String lastName,
-                                     @RequestParam(name = "page", defaultValue = "0") int page,
-                                     @RequestParam(name = "size", defaultValue = "20") int size) {
+    public Optional<Item> findByItemNo(@PathVariable("itemNo") Long itemNo)
+    {
+        return itemServiceRead.findItemByItemNo(itemNo);
+    }
 
-        page = (page<0)? 0: page;
-        size = (size<1)? 20: size;
+    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<Item> getAllItems()
+    {
+        return itemServiceRead.getAllItems();
+    }
 
-        return itemsService.findByLastName(lastName, PageRequest.of(page,size));
+    @RequestMapping(value = "/{itemNo}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity withdrawalItem(@PathVariable("itemNo") Long itemNo, @RequestParam int quantity)
+    {
+        WithdrawalDetails details =  itemServiceWrite.withdrawalItem(itemNo, quantity);
+        if (details.isSucceeded())
+        {
+            return new ResponseEntity(details.getMessage(),HttpStatus.OK);
+        }
+        return new ResponseEntity(details.getMessage(),HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping(value = "/{itemNo}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity depositItem(@PathVariable("itemNo") Long itemNo, @RequestParam int quantity)
+    {
+        DepositDetails details = itemServiceWrite.depositItem(itemNo, quantity);
+        if (details.isSucceeded())
+        {
+            return new ResponseEntity(details.getMessage(),HttpStatus.OK);
+        }
+        return new ResponseEntity(details.getMessage(),HttpStatus.BAD_REQUEST);
     }
 
 }
