@@ -11,5 +11,4 @@ public interface ItemServiceRead
 
     List<Item> getAllItems();
 
-
 }

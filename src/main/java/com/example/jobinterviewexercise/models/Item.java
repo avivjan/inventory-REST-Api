@@ -1,23 +1,32 @@
 package com.example.jobinterviewexercise.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Item {
+@ApiModel(description = "This model represents an item in the inventory")
+@Table(name = "ITEM")
+public class Item
+{
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "itemNo", nullable = false)
+    @ApiModelProperty(notes = "This property represents the item no. of the item")
     private Long itemNo;
 
     @Column(name = "name", nullable = false)
+    @ApiModelProperty(notes = "This property represents the name of the item")
     private String name;
 
     @Column(name = "amount", nullable = false)
+    @ApiModelProperty(notes = "This property represents the existing amount of the item")
     private int amount;
 
     @Column(name = "inventoryCode", nullable = false)
+    @ApiModelProperty(notes = "This property represents the inventory code of the item")
     private Long inventoryCode;
 
 

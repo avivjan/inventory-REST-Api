@@ -1,6 +1,9 @@
 /Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/models/Item.java
-/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/service/ItemsService.java
-/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/repository/ItemsRepository.java
+/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/common/WithdrawalDetails.java
+/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/service/ItemServiceImplementation.java
+/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/common/ItemServiceRead.java
+/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/common/DepositDetails.java
 /Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/controller/ItemController.java
 /Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/JobInterviewExerciseApplication.java
-/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/service/ItemsServiceImpl.java
+/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/repository/ItemRepository.java
+/Users/avivjan/developer/Projects/Spring Boot projects/invetory-REST-Api/src/main/java/com/example/jobinterviewexercise/common/ItemServiceWrite.java

@@ -7,6 +7,8 @@ import com.example.jobinterviewexercise.common.WithdrawalDetails;
 import com.example.jobinterviewexercise.models.Item;
 import com.example.jobinterviewexercise.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -80,9 +82,27 @@ public class ItemServiceImplementation implements ItemServiceRead, ItemServiceWr
             itemRepository.save(foundItem);
             details.setSucceeded(true);
             String foundItemName = foundItem.getName();
-            details.setMessage(String.format("Your Withdrawal succeeded, the new quantity of %s : %d", foundItemName, newAmount));
+            details.setMessage(String.format("Your deposit succeeded, the new quantity of %s : %d", foundItemName, newAmount));
         }
         return details;
+    }
+
+    @Override
+    public void addItem(Item item)
+    {
+        itemRepository.save(item);
+    }
+
+    @Override
+    public boolean deleteItem(Long itemNo)
+    {
+        Optional<Item> optionalItem = itemRepository.findById(itemNo);
+        if(optionalItem.isPresent())
+        {
+            itemRepository.delete(optionalItem.get());
+            return true;
+        }
+        return false;
     }
 }
 
