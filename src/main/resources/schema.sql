@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS ITEM
     name TEXT NOT NULL,
     amount INT NOT NULL,
     inventory_code LONG DEFAULT NULL
-);
+)
 
