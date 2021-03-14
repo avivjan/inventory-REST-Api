@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.test.context.jdbc.Sql;
 import org.w3c.dom.DocumentType;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -22,7 +23,6 @@ public class JobInterviewExerciseApplication
 {
 	public static void main(String[] args)
 	{
-
 		SpringApplication.run(JobInterviewExerciseApplication.class, args);
 	}
 

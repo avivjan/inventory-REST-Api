@@ -1,10 +1,1 @@
-DROP TABLE IF EXISTS item;
-
-CREATE TABLE item
-(
-    item_no LONG AUTO_INCREMENT PRIMARY KEY,
-    name TEXT NOT NULL,
-    amount INT NOT NULL,
-    inventory_code LONG DEFAULT NULL
-);
-
+INSERT INTO ITEM (NAME, AMOUNT, INVENTORY_CODE) values ('milk', 2, 32423)

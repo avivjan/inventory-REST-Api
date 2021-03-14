@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS ITEM
+(
+    item_no LONG AUTO_INCREMENT PRIMARY KEY,
+    name TEXT NOT NULL,
+    amount INT NOT NULL,
+    inventory_code LONG DEFAULT NULL
+);
+
